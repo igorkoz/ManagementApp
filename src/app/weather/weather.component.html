@@ -1,0 +1,33 @@
+<div class="forecast-table">
+  <div class="container">
+    <div class="forecast-container">
+      <div class="today forecast">
+        <div class="forecast-header">
+          <div class="day">Last updated: {{forecasts.current.last_updated}} {{forecasts.location.tz_id}}</div>
+          <div class="date">Powered by APIXU</div>
+        </div>
+        <div class="forecast-content">
+          <div class="location">
+            <!--<p>ID: {{forecasts.location.tz_id}}</p>-->
+            <mat-form-field>
+              <mat-select value="{{cityCode}}" (selectionChange)="cityChange($event.value)">
+                <mat-option *ngFor="let city of cities" [value]="city.value">
+                  {{city.viewValue}}
+                </mat-option>
+              </mat-select>
+            </mat-form-field>
+          </div>
+          <div class="degree">
+            <div class="num">{{forecasts.current.temp_c}}<sup>o</sup>C</div>
+            <div class="forecast-icon">
+              <img src="{{forecasts.current.condition.icon}}" alt="">
+            </div>
+          </div>
+          <span><img src="assets/images/icon-humidity.png" alt="" />{{forecasts.current.humidity}}%</span>
+          <span><img src="assets/images/icon-wind.png" alt="" />{{forecasts.current.wind_kph}}kph</span>
+          <span><img src="assets/images/icon-compass.png" alt="" />{{forecasts.current.wind_dir}}</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
